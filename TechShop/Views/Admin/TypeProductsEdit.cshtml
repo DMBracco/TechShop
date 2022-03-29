@@ -1,0 +1,29 @@
+﻿@model TypeProduct
+@{
+    ViewBag.Title = "Edit Product";
+    Layout = "_AdminLayout";
+}
+
+<section class="edit-product">
+    <div class="card card-solid">
+        <form asp-action="TypeProductsEdit" method="post">
+            <div class="card-body">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label>Имя</label>
+                    <div><span asp-validation-for="Name" class="text-danger"></span></div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Сортировка</label>
+                    <div><span asp-validation-for="Sort" class="text-danger"></span></div>
+                    <textarea asp-for="Sort" class="form-control"></textarea>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                    <a asp-action="TypeProductsIndex" class="btn btn-secondary">Назад</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

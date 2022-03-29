@@ -1,0 +1,41 @@
+﻿@model LoginModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <title>@ViewData["Title"] - TechShop</title> 
+</head>
+<body>
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand ml-2">TechShop</span>
+    </div>
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-12 text-danger" asp-validation-summary="All"></div>
+
+            <div class="col-md-6">
+                <form asp-action="Login" asp-controller="Account" method="post">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div class="form-group">
+                        <label asp-for="Name">Имя</label>
+                        <div asp-validation-for="Name" class="text-danger"></div>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">Пароль</label>
+                        <div asp-validation-for="Password" class="text-danger"></div>
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Войти</button>
+                </form>
+                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

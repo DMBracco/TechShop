@@ -1,0 +1,19 @@
+﻿@model ProductsListViewModel
+@{
+    Layout = "ColumnsTwo";
+}
+@section SiteFilters {
+    <vc:navigation-menu selected="@Model.CurrentTypeProduct" />
+}
+
+<div class="row row-cols-1 row-cols-md-3">
+@foreach (var p in Model.Products) {
+    <partial name="ProductSummary" model="p" />
+}
+</div>
+
+<nav page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="" page-class-normal="page-item"
+     page-class-selected="page-item active" page-url-category="@Model.CurrentTypeProduct"
+     aria-label="page navigation">
+</nav>

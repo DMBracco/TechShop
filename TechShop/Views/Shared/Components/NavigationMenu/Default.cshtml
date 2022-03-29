@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action" asp-action="Index" asp-controller="Catalog">Все</a>
+
+    @foreach (var item in Model) {
+        <a class="list-group-item list-group-item-action @(item == ViewBag.SelectedCategory ? "list-group-item-danger": "")"
+           asp-action="Index" asp-controller="Catalog"
+           asp-route-typeProduct="@item"
+           asp-route-productPage="1">
+            @item
+        </a>
+    }
+</div>

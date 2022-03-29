@@ -1,0 +1,86 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Edit Product";
+    Layout = "_AdminLayout";
+}
+
+<section class="edit-product">
+    <div class="card card-solid">
+        <form asp-action="Edit" method="post">
+            <div class="card-body">
+                <input type="hidden" asp-for="ProductID" />
+                <div class="form-group">
+                    <label>Имя</label>
+                    <div><span asp-validation-for="Name" class="text-danger"></span></div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Описание</label>
+                    <div><span asp-validation-for="Description" class="text-danger"></span></div>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Детальное описание</label>
+                    <div><span asp-validation-for="DetailedDescription" class="text-danger"></span></div>
+                    <textarea asp-for="DetailedDescription" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Тип Продукта</label>
+                    <select asp-for="TypeProductId" asp-items="@ViewBag.TypeProducts" class="custom-select rounded-0"></select>
+                </div>
+                <div class="form-group">
+                    <label>Цена</label>
+                    <div><span asp-validation-for="Price" class="text-danger"></span></div>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<section class="content-header">
+    <div class="row mb-2">
+        <div class="col-auto">
+        <h3>Добавленние изображения</h3>
+        </div>
+    </div>
+</section>
+<section class="edit-product">
+    <div class="card card-solid">
+        <form asp-action="AddFile" asp-controller="Admin" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                @if(null == Model.Name)
+                {
+                    <label for="exampleInputFile">Сначала сохраните продукт</label>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="ProductID" />
+                    @*<div class="form-group">
+                        <label>Изображение</label>
+                        <input name="ImageIFormFile" type="file" class="form-control" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Добавить" />
+                    </div>*@
+                    
+                    <label for="exampleInputFile">Загрузка изображение</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                        <input type="file" name="ImageIFormFile" class="custom-file-input" id="exampleInputFile"  accept=".jpg, .jpeg, .png">
+                        <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
+                        </div>
+                        <div class="input-group-append">
+                            <input class="input-group-text" type="submit" value="Добавить" />
+                        </div>
+                    </div>
+                }
+                </div>
+            </div> 
+        </form>
+    </div>
+</section>

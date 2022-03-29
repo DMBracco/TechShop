@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row m-1 p-1">
+    <div id="categories" class="col-3">
+        @await RenderSectionAsync("SiteFilters", false)
+    </div>
+    <div class="col-9">
+        @RenderBody()
+    </div>
+</div>
